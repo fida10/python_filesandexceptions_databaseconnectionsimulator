@@ -11,12 +11,13 @@ before giving up and returning an appropriate message for the type of exception 
 import random
 
 def database_connection_simulator():
-    try: 
-        random.choice([0, 1])
-        return 'Connected successfully'
-    except ConnectionError:
-        return 'Failed to connect: ConnectionError'
-    except TimeoutError:
-        return 'Failed to connect: TimeoutError'
+    for i in range(3):
+        try: 
+            random.choice([0, 1])
+            return 'Connected successfully'
+        except ConnectionError:
+            return 'Failed to connect: ConnectionError'
+        except TimeoutError:
+            return 'Failed to connect: TimeoutError'
     
 print(database_connection_simulator())
